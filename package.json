@@ -1,0 +1,14 @@
+{
+  "name": "wetstone",
+  "version": "1.0.0",
+  "description": "Practice manager and Prompt generator",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^22.1.0"
+  }
+}

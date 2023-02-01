@@ -1,0 +1,35 @@
+
+  div.nav >ul li a.active {
+    background-color: #0497aa;
+    color: white;
+  }
+  div.nav > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: rgb(32, 35, 36);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+
+  div.nav >ul li a {
+    display: block;
+    color: rgb(232, 230, 227);
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+
+  /* Change the link color on hover */
+  div.nav >ul a:hover:not(.active) {
+    background-color: rgb(64, 69, 72);;
+    color: rgb(232, 230, 227);
+  }
+  div.nav{
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    float: left;
+  }
