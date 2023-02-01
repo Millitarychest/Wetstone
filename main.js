@@ -1,9 +1,13 @@
 // main.js
 
+
+
+
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
-const DB = require('./functions/sql.js')
+const DB = require('./functions/sql.js');
+const { resolve } = require('path');
 
 const createWindow = () => {
   // Create the browser window.
@@ -21,10 +25,10 @@ const createWindow = () => {
   //ipcHandlers
   ipcMain.handle('ping', () => 'pong')
   //load Project data from DB
-  ipcMain.handle('fetchAllP', () => DB.fetchProjects())
-  ipcMain.handle('fetchDoneP', () => DB.fetchCompProjects())
-  ipcMain.handle('fetchUndoneP', () => DB.fetchIdeas())
-  ipcMain.handle('fetchPreview', () => DB.fetchPreview())
+  ipcMain.handle('fetchAllP', async () => {return DB.fetchProjects()})
+  ipcMain.handle('fetchDoneP', async () => {return DB.fetchCompProjects()})
+  ipcMain.handle('fetchUndoneP', async () => {return DB.fetchIdeas()})
+  ipcMain.handle('fetchPreview', () => {return DB.fetchPreview()})
   
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
