@@ -2,7 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="../css/nav.css" />
-    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/project.css" />
     <meta charset="UTF-8" />
 
     <title>Wetstone</title>
@@ -19,11 +19,20 @@
     </div>
     <!--main area-->
     <div>
-        <div id="filter-bar">
-
+        <div id="filter-bar" style="margin-left:210px;margin-right: 10px;">
+          <input type="text" id="searchIn" onkeyup="search()" placeholder="Search for names..">
         </div>
-        <div id="project-container">
-            <!--Filled via renderer-->
+        <div id="project-container" style="margin-left: 210px;margin-right: 10px;">
+          <table id="projectTable" class="project-table" style="width: 100%;">
+              <th>Name</th>
+              <th>Description</th>
+              <th>Enviroment</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Menu</th>
+              <!--Filled via renderer-->
+          </table>
+            
         </div>
     </div>
 

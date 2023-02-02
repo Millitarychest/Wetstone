@@ -4,3 +4,49 @@ body {
     overflow: hidden;
     color: rgb(177, 177, 177);
 }
+.project-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: #36393e;
+    text-align: center;
+}
+.project-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.project-table th,
+.project-table td {
+    padding: 12px 15px;
+}
+.project-table tbody tr {
+    border-bottom: thin solid rgb(89, 89, 89);
+}
+
+.project-table tbody tr:nth-of-type(even) {
+    background-color: #36393e;
+}
+
+.project-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+#searchIn {
+    background-color: #36393e;
+    color: #ffffff;
+    margin-top: 10px;
+    width: 98.5%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 0px 12px 20px; /* Add some padding */
+    border: 1px solid rgb(89, 89, 89); /* Add a grey border */
+}
+.RmButton{
+    background-color: red;
+    color: #ffffff;
+    border-radius: 100%;
+    border: none;
+}

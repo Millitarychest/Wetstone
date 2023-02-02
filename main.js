@@ -25,9 +25,9 @@ const createWindow = () => {
   //ipcHandlers
   ipcMain.handle('ping', () => 'pong')
   //load Project data from DB
-  ipcMain.handle('fetchAllP', async () => {return DB.fetchProjects()})
-  ipcMain.handle('fetchDoneP', async () => {return DB.fetchCompProjects()})
-  ipcMain.handle('fetchUndoneP', async () => {return DB.fetchIdeas()})
+  ipcMain.handle('fetchAllP', () => {return DB.fetchProjects()})
+  ipcMain.handle('fetchDoneP', () => {return DB.fetchCompProjects()})
+  ipcMain.handle('fetchUndoneP', () => {return DB.fetchIdeas()})
   ipcMain.handle('fetchPreview', () => {return DB.fetchPreview()})
   
   // and load the index.html of the app.
