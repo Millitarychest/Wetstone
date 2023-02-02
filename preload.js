@@ -22,3 +22,9 @@ else if(location.pathname.endsWith('/project.html')){
     fetchUndone: () => ipcRenderer.invoke('fetchUndoneP'),
   })
 }
+else if(location.pathname.endsWith('/NewEntry.html')){
+  contextBridge.exposeInMainWorld('bridge', {
+    fetchE: () => ipcRenderer.invoke('fetchAllE'),
+    insertP: (name, desc, env, location, url, status) => ipcRenderer.invoke('insertProject', name, desc, env, location, url, status),
+  })
+}

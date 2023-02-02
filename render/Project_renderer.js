@@ -22,6 +22,7 @@ getAll().then((res) => {
     }
 });
 
+//remove project from db
 function DeleteProject() {
     let table = document.getElementById('projectTable');
     let row = table.rows.length - 1;
@@ -29,6 +30,7 @@ function DeleteProject() {
     //trigger DB delete
     //refresh table
 }
+
 
 //function for Search
 function search() {

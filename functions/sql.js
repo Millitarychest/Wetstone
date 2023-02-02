@@ -20,6 +20,28 @@ async function fetchProjects(){
             console.log(err);
         }
 }
+async function fetchEnv(){
+    var sql = "SELECT * FROM Env";
+    try{
+        conn = await pool.getConnection()
+        const rows = await conn.query(sql);
+        conn.end();
+        return rows;
+    }catch(err){
+        console.log(err);
+    }
+}
+async function insertProject(name, desc, env, location, url, status){
+    var sql = "INSERT INTO projects (`PName`, `Desc`, `EnvID`, `Location`, `Url`, `status`) VALUES ('"+name+"', '"+desc+"', '"+parseInt(env)+"', '"+location+"', '"+url+"', '"+status+"');";
+    try{
+        conn = await pool.getConnection()
+        const rows = await conn.query(sql);
+        conn.end();
+        return rows;
+    }catch(err){
+        console.log(err);
+    }
+}
 async function fetchCompProjects(){
     var sql = "SELECT * FROM projects join Env on projects.EnvID = Env.ID where projects.status = 'done' or projects.status = 'wip'";
     try{
@@ -65,4 +87,4 @@ async function fetchPreview(){
     }
 }
 
-module.exports = {fetchProjects, fetchCompProjects, fetchIdeas, fetchNotes, fetchPreview}
+module.exports = {fetchEnv, fetchProjects, fetchCompProjects, fetchIdeas, fetchNotes, fetchPreview, insertProject}

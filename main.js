@@ -29,6 +29,8 @@ const createWindow = () => {
   ipcMain.handle('fetchDoneP', () => {return DB.fetchCompProjects()})
   ipcMain.handle('fetchUndoneP', () => {return DB.fetchIdeas()})
   ipcMain.handle('fetchPreview', () => {return DB.fetchPreview()})
+  ipcMain.handle('fetchAllE', () => {return DB.fetchEnv()})
+  ipcMain.handle('insertProject', (event,name, desc, env, location, url, status) => {return DB.insertProject(name, desc, env, location, url, status)})
   
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
