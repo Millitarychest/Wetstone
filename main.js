@@ -4,7 +4,7 @@
 
 
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, shell } = require('electron')
 const path = require('path')
 const DB = require('./functions/sql.js');
 const { resolve } = require('path');
@@ -31,6 +31,10 @@ const createWindow = () => {
   ipcMain.handle('fetchPreview', () => {return DB.fetchPreview()})
   ipcMain.handle('fetchAllE', () => {return DB.fetchEnv()})
   ipcMain.handle('insertProject', (event,name, desc, env, location, url, status) => {return DB.insertProject(name, desc, env, location, url, status)})
+  ipcMain.handle('insertEnv', (event,name, com) => {return DB.insertEnv(name, com)})
+  ipcMain.handle('fetchByName', (event,name) => {return DB.fetchByName(name)})
+  ipcMain.handle('openUrl', (event,url) => {shell.openExternal(url)})
+  ipcMain.handle('updateProject', (event,name, desc, envID, location, url, status, pnr) => {return DB.updateProject(name, desc, envID, location, url, status, pnr)})
   
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')

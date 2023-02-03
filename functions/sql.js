@@ -20,6 +20,39 @@ async function fetchProjects(){
             console.log(err);
         }
 }
+async function updateProject(name, desc, envID, location, url, status, pnr){
+    var sql = "UPDATE projects SET `PName` ='"+ name+"',`Desc` = '"+desc+"',`Location` = '"+location+"',`EnvID` = '"+envID+"',`Url` = '"+url+"',`status` = '"+status+"' WHERE `PNr` ="+pnr+";";
+    try{
+        conn = await pool.getConnection()
+        const rows = await conn.query(sql);
+        conn.end();
+        return rows;
+    }catch(err){
+        console.log(err);
+    }
+}
+async function fetchByName(name){
+    var sql = "SELECT * FROM projects join Env on projects.EnvID = Env.ID where PName = '"+unescape(name)+"'";
+    try{
+        conn = await pool.getConnection()
+        const rows = await conn.query(sql);
+        conn.end();
+        return rows;
+    }catch(err){
+        console.log(err);
+    }
+}
+async function insertEnv(name, com){
+    var sql = "INSERT INTO Env (`EName`, `Command`) VALUES ('"+name+"', '"+com+"');";
+    try{
+        conn = await pool.getConnection()
+        const rows = await conn.query(sql);
+        conn.end();
+        return rows;
+    }catch(err){
+        console.log(err);
+    }
+}
 async function fetchEnv(){
     var sql = "SELECT * FROM Env";
     try{
@@ -87,4 +120,4 @@ async function fetchPreview(){
     }
 }
 
-module.exports = {fetchEnv, fetchProjects, fetchCompProjects, fetchIdeas, fetchNotes, fetchPreview, insertProject}
+module.exports = {insertEnv,fetchEnv, fetchProjects, fetchCompProjects, fetchIdeas, fetchNotes, fetchPreview, insertProject, fetchByName, updateProject}

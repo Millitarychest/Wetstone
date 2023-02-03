@@ -14,7 +14,7 @@ getAll().then((res) => {
       let cell4 = r.insertCell();
       let cell5 = r.insertCell();
       let cell6 = r.insertCell();
-      cell1.innerHTML = row.PName;
+      cell1.innerHTML = "<u><b onclick='viewDetails(event)'>"+row.PName+"</b></u>";
       cell2.innerHTML = row.Desc;
       cell3.innerHTML = row.EName;
       cell4.innerHTML = row.Location;
@@ -22,6 +22,10 @@ getAll().then((res) => {
       cell6.innerHTML = "<button class='RmButton' onclick='DeleteProject()'>X</button>";
     }
 });
+
+function viewDetails (event) {
+  location.href = "../project-view/projectDetails.html?name="+event.target.innerHTML;
+}
 
 //remove project from db
 function DeleteProject() {

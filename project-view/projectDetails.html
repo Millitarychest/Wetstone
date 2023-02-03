@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/nav.css" />
+    <link rel="stylesheet" href="../css/projectDetails.css" />
+    <meta charset="UTF-8" />
+
+    <title>Wetstone</title>
+  </head>
+  <body style="overflow-y: scroll;" onload="populate()">
+    <!--navbar-->
+    <div class="nav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#news">Notes</a></li>
+        <li><a class="active" href="project.html">Projects</a></li>
+        <li><a href="../dialogs/NewEntry.html">Add New</a></li>
+      </ul>
+    </div>
+    <!--main area-->
+    <div>
+        <div style="margin-left:225px;margin-right: 10px;">
+            <br>
+            <h1 style="margin-top: 0px;" id="headline">New Project</h1>
+            <hr>
+            <div id="info" style="display:block">
+                <label for="desc">Description:</label>
+                <p id="desc" class="Details">no description</p>
+                <label for="env">Environment:</label>
+                <p id="env"class="Details"></p>
+                <label for="stat">Status:</label>
+                <p id="stat"class="Details"></p>
+                <label for="location">Location:</label>
+                <u><p id="location" class="Details">no local instance</p></u>
+                <label for="host">Url:</label>
+                <u><p id="host"class="Details">not Backupped</p></u>
+                <br>
+                <hr>
+                <br>
+                <button id="edit" onclick="editMode()">Edit</button>
+            </div>
+            <div id="editDiv" style="display:none">
+                <form >
+                    <label for="ename">Name:</label>
+                    <input id="ename" class="Details"></input>
+                    <label for="edesc">Description:</label>
+                    <input id="edesc" class="Details"></input>
+
+
+                    <label for="eenv">Environment:</label>
+                    <select id="eenv"class="Details" style="width:97%"></select>
+
+
+                    <label for="estat">Status:</label>
+                    <br>
+                    <select id="estat"class="Details" style="width: 97%;">
+                        <option value="wip">wip</option>
+                        <option value="done">complete</option>
+                        <option value="planned">planned</option>
+                        <option value="idea">idea</option>
+                    </select>
+                    <label for="elocation">Location:</label>
+                    <input id="elocation" class="Details"></input>
+                    <br>
+                    <label for="ehost">Url:</label>
+                    <br>
+                    <input id="ehost"class="Details"></input>
+                    <br>
+                    <hr>
+                    <br>
+                    
+                </form>
+                <button id="update" onclick="update()">Update</button>
+            </div>
+        </div>
+    </div>
+
+  </body>
+  <script src="../render/ProjectDetails_renderer.js"></script>
+</html>

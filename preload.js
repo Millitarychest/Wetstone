@@ -28,3 +28,16 @@ else if(location.pathname.endsWith('/NewEntry.html')){
     insertP: (name, desc, env, location, url, status) => ipcRenderer.invoke('insertProject', name, desc, env, location, url, status),
   })
 }
+else if(location.pathname.endsWith('/NewEnv.html')){
+  contextBridge.exposeInMainWorld('bridge', {
+    insertE: (name, com) => ipcRenderer.invoke('insertEnv', name, com),
+  })
+}
+else if(location.pathname.endsWith('/projectDetails.html')){
+  contextBridge.exposeInMainWorld('bridge', {
+    fetchByName: (name) => ipcRenderer.invoke('fetchByName', name),
+    openUrl: (url) => ipcRenderer.invoke('openUrl', url),
+    fetchE: () => ipcRenderer.invoke('fetchAllE'),
+    updateProject: (name, desc, envID, location, url, status, pnr) => ipcRenderer.invoke('updateProject', name, desc, envID, location, url, status, pnr),
+  })
+}

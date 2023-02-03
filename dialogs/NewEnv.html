@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/nav.css" />
+    <link rel="stylesheet" href="../css/newEntry.css" />
+    <meta charset="UTF-8" />
+
+    <title>Wetstone</title>
+  </head>
+  <body>
+    <!--navbar-->
+    <div class="nav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#news">Notes</a></li>
+        <li><a href="../project-view/project.html">Projects</a></li>
+        <li><a href="./NewEntry.html">Add Project</a></li>
+      </ul>
+    </div>
+    <!--main area-->
+    <div style="margin-left:225px;margin-right: 10px;">
+        <form ID="form" onsubmit="create()">
+            <br>
+            <h1 style="margin-top: 0px;">New Project</h1>
+            <hr>
+
+            <label for="name"><b>Name</b></label><br>
+            <input class="txtIn" type="text" placeholder="Enter Name" name="name" required>
+            <br>
+            <label for="com"><b>Command</b></label><br>
+            <input class="txtIn" type="text" placeholder="Enter Start command" name="com">
+            <br>
+            <button type="submit" class="submit">Submit</button>
+        </form>
+    </div>
+
+  </body>
+  <script src="../render/newEnv_renderer.js"></script>
+</html>
