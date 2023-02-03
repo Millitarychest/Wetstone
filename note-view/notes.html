@@ -12,9 +12,9 @@
     <div class="nav">
       <ul>
         <li><a href="../index.html">Home</a></li>
-        <li><a href="../note-view/notes.html">Notes</a></li>
-        <li><a class="active" href="project.html">Projects</a></li>
-        <li><a href="../dialogs/NewEntry.html">Add New</a></li>
+        <li><a class="active" href="notes.html">Notes</a></li>
+        <li><a  href="../project-view/project.html">Projects</a></li>
+        <li><a onclick="makeNote(event)">Add New</a></li>
       </ul>
     </div>
     <!--main area-->
@@ -23,12 +23,8 @@
           <input type="text" id="searchIn" onkeyup="search()" placeholder="Search for names..">
         </div>
         <div id="project-container" style="margin-left: 210px;margin-right: 10px;">
-          <table id="projectTable" class="project-table" style="width: 100%;">
-              <th onclick="sortTable(0)">Name</th>
-              <th onclick="sortTable(1)">Description</th>
-              <th onclick="sortTable(2)">Enviroment</th>
-              <th onclick="sortTable(3)">Location</th>
-              <th onclick="sortTable(4)">Status</th>
+          <table id="notetable" class="project-table" style="width: 100%;">
+              <th onclick="sortTable(0)">Title</th>
               <th >Menu</th>
               <!--Filled via renderer-->
           </table>
@@ -37,5 +33,5 @@
     </div>
 
   </body>
-  <script src="../render/Project_renderer.js"></script>
+  <script src="../render/Notes_renderer.js"></script>
 </html>

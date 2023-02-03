@@ -50,3 +50,8 @@ else if(location.pathname.endsWith('/noteDetails.html')){
     editNote: (title, content, id) => ipcRenderer.invoke('editNote', title, content, id),
   })
 }
+else if(location.pathname.endsWith('/notes.html')){
+  contextBridge.exposeInMainWorld('bridge', {
+    fetchNotes: () => ipcRenderer.invoke('fetchNotes'),
+  })
+}
