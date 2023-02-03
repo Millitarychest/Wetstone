@@ -97,17 +97,7 @@ async function fetchIdeas(){
         console.log(err);
     }
 }
-async function fetchNotes(){
-    var sql = "SELECT * FROM Notes";
-    try{
-        conn = await pool.getConnection()
-        const rows = await conn.query(sql);
-        conn.end();
-        return rows;
-    }catch(err){
-        console.log(err);
-    }
-}
+
 async function fetchPreview(){
     var sql = "SELECT * FROM projects join Env on projects.EnvID = Env.ID where projects.status = 'done' or projects.status = 'wip' or projects.status = 'planned' limit 4";
     try{
@@ -119,5 +109,39 @@ async function fetchPreview(){
         console.log(err);
     }
 }
+async function fetchNotes(){
+    var sql = "SELECT * FROM notes";
+    try{
+        conn = await pool.getConnection()
+        const rows = await conn.query(sql);
+        conn.end();
+        return rows;
+    }catch(err){
+        console.log(err);
+    }
+}
 
-module.exports = {insertEnv,fetchEnv, fetchProjects, fetchCompProjects, fetchIdeas, fetchNotes, fetchPreview, insertProject, fetchByName, updateProject}
+async function insertNote(title, content){
+    var sql = "INSERT INTO notes (`Title`, `Content`) VALUES ('"+title+"', '"+content+"');";
+    try{
+        conn = await pool.getConnection()
+        const rows = await conn.query(sql);
+        conn.end();
+        return rows;
+    }catch(err){
+        console.log(err);
+    }
+}
+async function updateNote(title, content ,nnr){
+    var sql = "UPDATE notes SET `Title` ='"+title+"',`Content` = '"+content+"' WHERE `NNr` ="+nnr+";";
+    try{
+        conn = await pool.getConnection()
+        const rows = await conn.query(sql);
+        conn.end();
+        return rows;
+    }catch(err){
+        console.log(err);
+    }
+}
+
+module.exports = {fetchNotes, insertEnv,fetchEnv, fetchProjects, fetchCompProjects, fetchIdeas, fetchPreview, insertProject, fetchByName, updateProject, insertNote, updateNote}

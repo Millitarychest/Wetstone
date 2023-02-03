@@ -2,6 +2,10 @@ async function getValues(){
     res = await bridge.fetchPreview();
     return res;
 }
+async function getN(){
+    res = await bridge.fetchNotes();
+    return res;
+}
 
 getValues().then((res) => {
     if(res.length >= 1){
@@ -21,3 +25,26 @@ getValues().then((res) => {
         p2Desc.innerText = res[3].Desc;
     }
 });
+
+getN().then((res) => {
+    let table = document.getElementById('notetable');
+    table.insertRow();
+    let ro = table.rows[table.rows.length - 1];
+    let cell = ro.insertCell();
+    cell.innerHTML = "<u><b onclick='makeNote(event)'style='color:#ffffff'>New Note</b><u>";
+    for (let row of res) {
+      
+      table.insertRow();
+      let r = table.rows[table.rows.length - 1];
+      let cell1 = r.insertCell();
+      cell1.innerHTML = "<u><b onclick='viewNote(event)'>"+row.Title+"</b></u>";
+    }
+    
+});
+
+function viewNote (event) {
+  location.href = "./note-view/noteDetails.html?name="+event.target.innerHTML+"&mode=Edit";
+}
+function makeNote (event) {
+    location.href = "./note-view/noteDetails.html?name="+event.target.innerHTML+"&mode=New";
+}

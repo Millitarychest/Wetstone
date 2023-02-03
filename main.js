@@ -35,7 +35,11 @@ const createWindow = () => {
   ipcMain.handle('fetchByName', (event,name) => {return DB.fetchByName(name)})
   ipcMain.handle('openUrl', (event,url) => {shell.openExternal(url)})
   ipcMain.handle('updateProject', (event,name, desc, envID, location, url, status, pnr) => {return DB.updateProject(name, desc, envID, location, url, status, pnr)})
+  ipcMain.handle('fetchNotes', () => {return DB.fetchNotes()})
+  ipcMain.handle('addNote', (event, title, content) => {return DB.insertNote(title, content)})
+  ipcMain.handle('editNote', (event, title, content, id) => {return DB.updateNote(title, content, id)})
   
+
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
 

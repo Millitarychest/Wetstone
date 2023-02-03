@@ -8,7 +8,7 @@ body {
     width: 75%;
     margin-left: 250px;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 50% 25% 25%;
     column-gap: 0px;
     row-gap: 0px;
     overflow: hidden;
@@ -73,3 +73,40 @@ a{
     margin-top: 50px;
     display: inline-block;
 }
+
+
+.note-table{
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: #36393e;
+  text-align: center;
+  float: right;
+  height: 100%;
+  position: relative;
+  overflow: auto;
+}
+.note-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+.note-table th,
+.note-table td {
+  padding: 12px 15px;
+}
+.note-table tbody tr {
+  border-bottom: thin solid rgb(89, 89, 89);
+}
+
+.note-table tbody tr:nth-of-type(even) {
+  background-color: #36393e;
+}
+
+.note-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+

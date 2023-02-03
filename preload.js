@@ -13,6 +13,7 @@ if(location.pathname.endsWith('/index.html')) {
     //ping: () => ipcRenderer.invoke('ping'),
     fetchPreview: () => ipcRenderer.invoke('fetchPreview'),
     // we can also expose variables, not just functions
+    fetchNotes: () => ipcRenderer.invoke('fetchNotes'),
   })
 }
 else if(location.pathname.endsWith('/project.html')){
@@ -39,5 +40,12 @@ else if(location.pathname.endsWith('/projectDetails.html')){
     openUrl: (url) => ipcRenderer.invoke('openUrl', url),
     fetchE: () => ipcRenderer.invoke('fetchAllE'),
     updateProject: (name, desc, envID, location, url, status, pnr) => ipcRenderer.invoke('updateProject', name, desc, envID, location, url, status, pnr),
+  })
+}
+else if(location.pathname.endsWith('/noteDetails.html')){
+  contextBridge.exposeInMainWorld('bridge', {
+    fetchNotes: () => ipcRenderer.invoke('fetchNotes'),
+    addNote: (title, content) => ipcRenderer.invoke('addNote', title, content),
+    editNote: (title, content, id) => ipcRenderer.invoke('editNote', title, content, id),
   })
 }
