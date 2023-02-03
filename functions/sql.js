@@ -143,5 +143,16 @@ async function updateNote(title, content ,nnr){
         console.log(err);
     }
 }
+async function deleteProject(nr){
+    var sql = "DELETE FROM projects where PNr = "+nr+";";
+        try{
+            conn = await pool.getConnection()
+            const rows = await conn.query(sql);
+            conn.end();
+            return rows;
+        }catch(err){
+            console.log(err);
+        }
+}
 
-module.exports = {fetchNotes, insertEnv,fetchEnv, fetchProjects, fetchCompProjects, fetchIdeas, fetchPreview, insertProject, fetchByName, updateProject, insertNote, updateNote}
+module.exports = {deleteProject,fetchNotes, insertEnv,fetchEnv, fetchProjects, fetchCompProjects, fetchIdeas, fetchPreview, insertProject, fetchByName, updateProject, insertNote, updateNote}

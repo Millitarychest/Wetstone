@@ -38,6 +38,7 @@ const createWindow = () => {
   ipcMain.handle('fetchNotes', () => {return DB.fetchNotes()})
   ipcMain.handle('addNote', (event, title, content) => {return DB.insertNote(title, content)})
   ipcMain.handle('editNote', (event, title, content, id) => {return DB.updateNote(title, content, id)})
+  ipcMain.handle('deleteProject', (event, id) => {return DB.deleteProject(id)})
   
 
   // and load the index.html of the app.

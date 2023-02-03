@@ -31,13 +31,13 @@ getN().then((res) => {
     table.insertRow();
     let ro = table.rows[table.rows.length - 1];
     let cell = ro.insertCell();
-    cell.innerHTML = "<u><b onclick='makeNote(event)'style='color:#ffffff'>New Note</b><u>";
+    cell.innerHTML = "<u><b onclick='makeNote(event)'>New Note</b><u>";
     for (let row of res) {
       
       table.insertRow();
       let r = table.rows[table.rows.length - 1];
       let cell1 = r.insertCell();
-      cell1.innerHTML = "<u><b onclick='viewNote(event)'>"+row.Title+"</b></u>";
+      cell1.innerHTML = "<u><b onclick='viewNote(event)' style='height: 10px;'>"+row.Title+"</b></u>";
     }
     
 });

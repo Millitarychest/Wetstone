@@ -19,7 +19,7 @@ getAll().then((res) => {
       cell3.innerHTML = row.EName;
       cell4.innerHTML = row.Location;
       cell5.innerHTML = row.status;
-      cell6.innerHTML = "<button class='RmButton' onclick='DeleteProject()'>X</button>";
+      cell6.innerHTML = "<button class='RmButton' onclick='DeleteProject(event)' pnr='"+row.PNr+"'>X</button>";
     }
 });
 
@@ -28,12 +28,16 @@ function viewDetails (event) {
 }
 
 //remove project from db
-function DeleteProject() {
-    let table = document.getElementById('projectTable');
-    let row = table.rows.length - 1;
-    table.deleteRow(row);
+function DeleteProject(e) {
+    button = e.target;
+    pnr = button.getAttribute("pnr");
     //trigger DB delete
     //refresh table
+    killProject(pnr);
+    location.href = "../project-view/project.html";
+}
+async function killProject(nr){
+  await bridge.deleteProject(nr);
 }
 
 
