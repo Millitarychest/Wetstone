@@ -7,7 +7,7 @@
 
     <title>Wetstone</title>
   </head>
-  <body>
+  <body style="overflow-y: scroll;">
     <!--navbar-->
     <div class="nav">
       <ul>
@@ -25,12 +25,12 @@
         </div>
         <div id="project-container" style="margin-left: 210px;margin-right: 10px;">
           <table id="projectTable" class="project-table" style="width: 100%;">
-              <th>Name</th>
-              <th>Description</th>
-              <th>Enviroment</th>
-              <th>Location</th>
-              <th>Status</th>
-              <th>Menu</th>
+              <th onclick="sortTable(0)">Name</th>
+              <th onclick="sortTable(1)">Description</th>
+              <th onclick="sortTable(2)">Enviroment</th>
+              <th onclick="sortTable(3)">Location</th>
+              <th onclick="sortTable(4)">Status</th>
+              <th >Menu</th>
               <!--Filled via renderer-->
           </table>
             
