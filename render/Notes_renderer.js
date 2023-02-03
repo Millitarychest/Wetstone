@@ -13,7 +13,7 @@ getN().then((res) => {
       let cell1 = r.insertCell();
       cell1.innerHTML = "<u><b onclick='viewNote(event)' style='height: 10px;'>"+row.Title+"</b></u>";
       let cell2 = r.insertCell();
-      cell2.innerHTML = "<button class='RmButton' onclick='DeleteProject(event)' pnr='"+row.PNr+"'>X</button>";
+      cell2.innerHTML = "<button class='RmButton' onclick='DeleteNote(event)' pnr='"+row.NNr+"'>X</button>";
     }
     
 });
@@ -25,7 +25,17 @@ function makeNote (event) {
     location.href = "noteDetails.html?name=NewNote&mode=New";
 }
 
-
+function DeleteNote(e) {
+  button = e.target;
+  pnr = button.getAttribute("pnr");
+  //trigger DB delete
+  //refresh table
+  killNote(pnr);
+  location.href = "../note-view/notes.html";
+}
+async function killNote(nr){
+await bridge.deleteNote(nr);
+}
 
 //function for Search
 function search() {
