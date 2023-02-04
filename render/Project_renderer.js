@@ -48,8 +48,14 @@ function startProject(e) {
 
 }
 
-async function pull(path, url){
+async function clone(path, url){
   return await bridge.cloneProject(path, url);
+}
+async function pull(path){
+  return await bridge.pullProject(path);
+}
+async function changeLoc(name, desc, envID, location, url, status, pnr){
+  await bridge.updateProject(name, desc, envID, location, url, status, pnr);
 }
 
 function cloneProject(e){
@@ -59,16 +65,20 @@ function cloneProject(e){
   resolveName(button.parentNode.parentNode.cells[0].innerText).then((res) => {
       if(res[0].Location != null && res[0].Location != ""){
         //alert Project already exists on local
-      
+        pull(res[0].Location).then((stat) => {
+         
+        }).catch((err) => {
+          alert(err);
+        })
       }
       else{
         //prompt for location
         //clone to location
         //update location in db
-        prompt("Where should the Project be cloned to?").then((resp) => {
+        prompt("p","Where should the Project be cloned to?").then((resp) => {
           if(resp != null && resp != ""){
-            pull(resp, res[0].Url).then((stat) => {
-              alert(stat);
+            clone(resp, res[0].Url).then((stat) => {
+              changeLoc(res[0].PName, res[0].Desc, res[0].EnvID, resp, res[0].Url, res[0].status, res[0].PNr)
             }).catch((err) => {
               alert(err);
             });
@@ -79,8 +89,10 @@ function cloneProject(e){
   });    
 
 }
-async function prompt(label){
-  return await bridge.promptForLocation(label);
+async function prompt(mode, label){
+  if (mode == "p"){
+    return await bridge.promptForLocation(label);
+  }
 }
 
 function viewDetails (event) {

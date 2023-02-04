@@ -21,6 +21,7 @@ async function fetchProjects(){
         }
 }
 async function updateProject(name, desc, envID, location, url, status, pnr){
+    location = location.replace(/\\/g, '/');
     var sql = "UPDATE projects SET `PName` ='"+ name+"',`Desc` = '"+desc+"',`Location` = '"+location+"',`EnvID` = '"+envID+"',`Url` = '"+url+"',`status` = '"+status+"' WHERE `PNr` ="+pnr+";";
     try{
         conn = await pool.getConnection()

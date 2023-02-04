@@ -5,4 +5,9 @@ async function cloneGit(path, url) {
     return await git.clone(url, path, []);
 }
 
-module.exports = {cloneGit};
+async function pullGit(path) {
+    const git = simpleGit(path);
+    return await git.pull();
+}
+
+module.exports = {cloneGit, pullGit};

@@ -25,7 +25,9 @@ else if(location.pathname.endsWith('/project.html')){
     fetchByName: (name) => ipcRenderer.invoke('fetchByName', name),
     execProject: (path, command) => ipcRenderer.invoke('execProject', path, command),
     cloneProject: (path, url) => ipcRenderer.invoke('cloneProject', path, url),
+    pullProject: (path) => ipcRenderer.invoke('pullProject', path),
     promptForLocation: (label) => ipcRenderer.invoke('promptForLocation',label),
+    updateProject: (name, desc, envID, location, url, status, pnr) => ipcRenderer.invoke('updateProject', name, desc, envID, location, url, status, pnr),
   })
 }
 else if(location.pathname.endsWith('/NewEntry.html')){

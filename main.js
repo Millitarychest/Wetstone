@@ -48,9 +48,9 @@ const createWindow = () => {
   ipcMain.handle('getRandomIdea', () => {return Wtc.getRandomIdea()})
   ipcMain.handle('insertIdea', (event, title, desc) => {return DB.insertIdea(title, desc)})
   ipcMain.handle('cloneProject', (event, path, url) => {return git.cloneGit(path, url)})
+  ipcMain.handle('pullProject', (event, path, url) => {return git.pullGit(path)})
   //dialogs
   ipcMain.handle('promptForLocation', async (event, label) => {return await prompt({label:label}).then((r) => {return r}).catch(console.error) })
-
   //run scripts
   ipcMain.handle('execProject', (event, path ,com) => {return starter.execProject(path, com)})
 
