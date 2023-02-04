@@ -56,3 +56,9 @@ body {
     border-radius: 100%;
     border: none;
 }
+.pullButton{
+    background-color: lightseagreen;
+    color: #ffffff;
+    border-radius: 100%;
+    border: none;
+}

@@ -1,3 +1,5 @@
+
+
 async function getAll(){
     res = await bridge.fetchAll();
     return res;
@@ -19,7 +21,7 @@ getAll().then((res) => {
       cell3.innerHTML = row.EName;
       cell4.innerHTML = row.Location;
       cell5.innerHTML = row.status;
-      cell6.innerHTML = "<button class='RmButton' onclick='DeleteProject(event)' pnr='"+row.PNr+"'>X</button><button class='startButton' onclick='startProject(event)' pnr='"+row.PNr+"'>></button>";
+      cell6.innerHTML = "<button class='RmButton' onclick='DeleteProject(event)' pnr='"+row.PNr+"'>&#128465</button><button class='startButton' onclick='startProject(event)' pnr='"+row.PNr+"'>&#9654</button><button class='pullButton' onclick='cloneProject(event)' pnr='"+row.PNr+"'>&#8659</button>";
     }
 });
 async function resolveName(name){
@@ -44,6 +46,41 @@ function startProject(e) {
         }
     });
 
+}
+
+async function pull(path, url){
+  return await bridge.cloneProject(path, url);
+}
+
+function cloneProject(e){
+  button = e.target;
+  pnr = button.getAttribute("pnr");
+
+  resolveName(button.parentNode.parentNode.cells[0].innerText).then((res) => {
+      if(res[0].Location != null && res[0].Location != ""){
+        //alert Project already exists on local
+      
+      }
+      else{
+        //prompt for location
+        //clone to location
+        //update location in db
+        prompt("Where should the Project be cloned to?").then((resp) => {
+          if(resp != null && resp != ""){
+            pull(resp, res[0].Url).then((stat) => {
+              alert(stat);
+            }).catch((err) => {
+              alert(err);
+            });
+          }
+        });
+        //pullProject();
+      }
+  });    
+
+}
+async function prompt(label){
+  return await bridge.promptForLocation(label);
 }
 
 function viewDetails (event) {

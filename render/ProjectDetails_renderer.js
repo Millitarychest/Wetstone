@@ -109,6 +109,7 @@ function update(){
     if(ehost == "No Backup Host"){
         ehost = "";
     }
+    elocation = elocation.replace(/\\/g, '/');
     updateP(ename, edesc, elocation, eenv, estate, ehost, pnr);
     location.href = "../project-view/projectDetails.html?name="+ename;
 }

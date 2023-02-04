@@ -9,6 +9,9 @@ const path = require('path')
 const DB = require('./functions/sql.js');
 const Wtc = require('./functions/prompts.js');
 const starter = require('./functions/starter.js');
+const git = require('./functions/pullGit.js');
+const prompt = require('electron-prompt');
+
 const { resolve } = require('path');
 
 const createWindow = () => {
@@ -44,6 +47,9 @@ const createWindow = () => {
   ipcMain.handle('deleteNote', (event, id) => {return DB.deleteNote(id)})
   ipcMain.handle('getRandomIdea', () => {return Wtc.getRandomIdea()})
   ipcMain.handle('insertIdea', (event, title, desc) => {return DB.insertIdea(title, desc)})
+  ipcMain.handle('cloneProject', (event, path, url) => {return git.cloneGit(path, url)})
+  //dialogs
+  ipcMain.handle('promptForLocation', async (event, label) => {return await prompt({label:label}).then((r) => {return r}).catch(console.error) })
 
   //run scripts
   ipcMain.handle('execProject', (event, path ,com) => {return starter.execProject(path, com)})
