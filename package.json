@@ -12,6 +12,7 @@
     "electron": "^22.1.0"
   },
   "dependencies": {
+    "got": "^12.5.3",
     "mariadb": "^3.0.2"
   }
 }

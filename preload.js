@@ -56,3 +56,9 @@ else if(location.pathname.endsWith('/notes.html')){
     deleteNote: (id) => ipcRenderer.invoke('deleteNote', id),
   })
 }
+else if(location.pathname.endsWith('/prompt.html')){
+  contextBridge.exposeInMainWorld('bridge', {
+    getRandomIdea: () => ipcRenderer.invoke('getRandomIdea'),
+    insertIdea: (title, description) => ipcRenderer.invoke('insertIdea', title, description),
+  })
+}

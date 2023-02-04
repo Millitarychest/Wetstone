@@ -7,6 +7,7 @@
 const { app, BrowserWindow, ipcMain, shell } = require('electron')
 const path = require('path')
 const DB = require('./functions/sql.js');
+const Wtc = require('./functions/prompts.js');
 const { resolve } = require('path');
 
 const createWindow = () => {
@@ -40,6 +41,8 @@ const createWindow = () => {
   ipcMain.handle('editNote', (event, title, content, id) => {return DB.updateNote(title, content, id)})
   ipcMain.handle('deleteProject', (event, id) => {return DB.deleteProject(id)})
   ipcMain.handle('deleteNote', (event, id) => {return DB.deleteNote(id)})
+  ipcMain.handle('getRandomIdea', () => {return Wtc.getRandomIdea()})
+  ipcMain.handle('insertIdea', (event, title, desc) => {return DB.insertIdea(title, desc)})
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')

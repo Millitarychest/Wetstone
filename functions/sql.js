@@ -165,5 +165,17 @@ async function deleteNote(nr){
             console.log(err);
         }
 }
+async function insertIdea(name, desc){
+    var sql = "INSERT INTO projects (`PName`, `Desc`, `EnvID`, `status`) VALUES ('"+name+"', '"+desc+"', 3, 'idea');";
+    try{
+        conn = await pool.getConnection()
+        const rows = await conn.query(sql);
+        conn.end();
+        return rows;
+    }catch(err){
+        console.log(err);
+    }
+}
 
-module.exports = {deleteNote,deleteProject,fetchNotes, insertEnv,fetchEnv, fetchProjects, fetchCompProjects, fetchIdeas, fetchPreview, insertProject, fetchByName, updateProject, insertNote, updateNote}
+
+module.exports = {insertIdea,deleteNote,deleteProject,fetchNotes, insertEnv,fetchEnv, fetchProjects, fetchCompProjects, fetchIdeas, fetchPreview, insertProject, fetchByName, updateProject, insertNote, updateNote}
