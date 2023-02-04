@@ -103,13 +103,12 @@ function update(){
     var ehost = document.getElementById('ehost').value || document.getElementById('ehost').placeholder;
     var headline = document.getElementById('headline');
     var pnr = headline.getAttribute("pnr");
-    console.log(ename);
-    console.log(edesc);
-    console.log(elocation);
-    console.log(eenv);
-    console.log(estate);
-    console.log(ehost);
-    console.log(pnr);
+    if(elocation == "No Local Installation" || elocation == "null"){
+        elocation = "";
+    }
+    if(ehost == "No Backup Host"){
+        ehost = "";
+    }
     updateP(ename, edesc, elocation, eenv, estate, ehost, pnr);
     location.href = "../project-view/projectDetails.html?name="+ename;
 }

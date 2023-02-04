@@ -50,3 +50,9 @@ body {
     border-radius: 100%;
     border: none;
 }
+.startButton{
+    background-color: green;
+    color: #ffffff;
+    border-radius: 100%;
+    border: none;
+}

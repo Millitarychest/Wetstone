@@ -22,6 +22,8 @@ else if(location.pathname.endsWith('/project.html')){
     fetchDone: () => ipcRenderer.invoke('fetchDoneP'),
     fetchUndone: () => ipcRenderer.invoke('fetchUndoneP'),
     deleteProject: (nr) => ipcRenderer.invoke('deleteProject', nr),
+    fetchByName: (name) => ipcRenderer.invoke('fetchByName', name),
+    execProject: (path, command) => ipcRenderer.invoke('execProject', path, command),
   })
 }
 else if(location.pathname.endsWith('/NewEntry.html')){

@@ -19,9 +19,32 @@ getAll().then((res) => {
       cell3.innerHTML = row.EName;
       cell4.innerHTML = row.Location;
       cell5.innerHTML = row.status;
-      cell6.innerHTML = "<button class='RmButton' onclick='DeleteProject(event)' pnr='"+row.PNr+"'>X</button>";
+      cell6.innerHTML = "<button class='RmButton' onclick='DeleteProject(event)' pnr='"+row.PNr+"'>X</button><button class='startButton' onclick='startProject(event)' pnr='"+row.PNr+"'>></button>";
     }
 });
+async function resolveName(name){
+  return await bridge.fetchByName(name);
+}
+async function execProject(path, command){
+  return await bridge.execProject(path, command);
+}
+
+function startProject(e) {
+    button = e.target;
+    pnr = button.getAttribute("pnr");
+    
+    //get start command
+    //get location
+    //execute command at location if location is not null
+    
+    resolveName(button.parentNode.parentNode.cells[0].innerText).then((res) => {
+        if(res[0].Location != null){
+          let com = res[0].Command.replace("<%Name%>",res[0].PName);
+          execProject(res[0].Location, com);
+        }
+    });
+
+}
 
 function viewDetails (event) {
   location.href = "../project-view/projectDetails.html?name="+event.target.innerHTML;
