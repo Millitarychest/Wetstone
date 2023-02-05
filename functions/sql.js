@@ -24,11 +24,13 @@ async function updateProject(name, desc, envID, location, url, status, pnr){
     location = location.replace(/\\/g, '/');
     var sql = "UPDATE projects SET `PName` ='"+ name+"',`Desc` = '"+desc+"',`EnvID` = '"+envID+"',`Url` = '"+url+"',`status` = '"+status+"' WHERE `PNr` ="+pnr+";";
     var sql3 ="INSERT INTO locals (`LPNr`, `Location`, LDNr) VALUES ('"+pnr+"', '"+location+"','"+creds.device.id + "');";
-        
+    var sql2 = "UPDATE locals SET `Location` = '"+location+"' WHERE `LPNr` ="+pnr+" and LDNr = "+creds.device.id+";";    
     try{
         conn = await pool.getConnection()
         const rows = await conn.query(sql);
-        const ins = await conn.query(sql3);
+        const ins = await conn.query(sql3).catch((err) => {
+            const ins = conn.query(sql2);
+        });
         conn.end();
         return rows;
     }catch(err){
