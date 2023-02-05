@@ -66,7 +66,7 @@ function cloneProject(e){
       if(res[0].Location != null && res[0].Location != ""){
         //alert Project already exists on local
         pull(res[0].Location).then((stat) => {
-         
+        
         }).catch((err) => {
           alert(err);
         })
