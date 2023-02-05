@@ -4,15 +4,24 @@
   "description": "Practice manager and Prompt generator",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "dev": "electron ."
   },
-  "author": "",
+  "author": "Millitarychest",
   "license": "ISC",
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.4",
+    "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-rpm": "^6.0.4",
+    "@electron-forge/maker-squirrel": "^6.0.4",
+    "@electron-forge/maker-zip": "^6.0.4",
     "electron": "^22.1.0"
   },
   "dependencies": {
     "electron-prompt": "^1.7.0",
+    "electron-squirrel-startup": "^1.0.0",
     "got": "^12.5.3",
     "mariadb": "^3.0.2",
     "simple-git": "^3.16.0"
