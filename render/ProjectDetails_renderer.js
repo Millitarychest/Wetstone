@@ -98,7 +98,7 @@ function update(){
     var ename = document.getElementById('ename').value || document.getElementById('ename').placeholder;
     var edesc = document.getElementById('edesc').value || document.getElementById('edesc').placeholder;
     var elocation = document.getElementById('elocation').value || document.getElementById('elocation').placeholder;
-    var eenv = document.getElementById('env').getAttribute("envID");
+    var eenv = document.getElementById('eenv').value;
     var estate = document.getElementById('estat').value || document.getElementById('estat').placeholder;
     var ehost = document.getElementById('ehost').value || document.getElementById('ehost').placeholder;
     var headline = document.getElementById('headline');
