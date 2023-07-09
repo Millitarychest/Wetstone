@@ -22,7 +22,7 @@
   "dependencies": {
     "electron-prompt": "^1.7.0",
     "electron-squirrel-startup": "^1.0.0",
-    "got": "^12.5.3",
+    "got": "^12.6.1",
     "mariadb": "^3.0.2",
     "simple-git": "^3.16.0"
   }
