@@ -24,6 +24,6 @@
     "electron-squirrel-startup": "^1.0.0",
     "got": "^12.5.3",
     "mariadb": "^3.0.2",
-    "simple-git": "^3.16.0"
+    "simple-git": "^3.19.0"
   }
 }
